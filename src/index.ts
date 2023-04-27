@@ -3,6 +3,7 @@ type Dates = {
     endDate: string;
 };
 
+//Implemented Functionality
 const extractDates = (customer: any) => {
 
     let custListOfPeriods = customer.ListOfPeriods;
@@ -29,7 +30,7 @@ const extractDates = (customer: any) => {
         if ((custListOfPeriods[i] === '|' || i === custListOfPeriods.length - 1) && k - j === 9) {
 
             obj.endDate = custListOfPeriods.substring(j, k + 1);
-            if (obj.startDate !== "" && obj.endDate !== "") result.push({ ...obj });
+            result.push({ ...obj });
 
             j = -1;
         }
