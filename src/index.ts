@@ -3,18 +3,16 @@ type Dates = {
     endDate: string;
 };
 
-//Implemented functionality
 const extractDates = (customer: any) => {
 
     let custListOfPeriods = customer.ListOfPeriods;
+    const result: Dates[] = Array<Dates>();
     if (custListOfPeriods === undefined) return [];
 
-    const result: any[] = Array<any>();
     const obj: Dates = {
         startDate: "",
         endDate: ""
     };
-
     let j = -1, k = -1;
     for (let i = 0; i < custListOfPeriods.length; i++) {
         if (j === -1 && custListOfPeriods.charCodeAt([i]) >= 48 && custListOfPeriods.charCodeAt([i]) <= 57)
@@ -36,7 +34,7 @@ const extractDates = (customer: any) => {
             j = -1;
         }
 
-        if (i === custListOfPeriods.length - 1 && result.length === 0 && k - j > 9) result.push('string length is invalid');
+        if (i === custListOfPeriods.length - 1 && result.length === 0 && k - j > 9) return ['string length is invalid'];
 
     }
     return result;
